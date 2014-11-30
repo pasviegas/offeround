@@ -20,30 +20,19 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
-; Root Route
+; Basic routes
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defroutes root-routes*
+(defroutes basic-routes*
   (OPTIONS  "*" [] "")
-  (GET  	  "/" [] (root-handler)))
+  (GET      "/" [] (root-handler)))
 
-(def root-routes
-  "All root routes wrapped in their specific middleware"
-  (-> root-routes*
+(def basic-routes
+  "All basic routes wrapped in their specific middleware"
+  (-> basic-routes*
       (wrappers/cross-origin-headers)
       (wrappers/content-type "application/json")))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; Basic Routes
-;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defroutes basic-routes
-  (OPTIONS  "*" [] root-routes)
-  (GET  	  "/" [] root-routes)
-  (route/not-found not-found/not-found-routes))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
@@ -52,8 +41,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defroutes app-routes
-  (OPTIONS  "*"  [] basic-routes)
-  (GET  	  "*"  [] basic-routes)
-  (POST  	  "*"  [] v1/api-routes))
+  (OPTIONS  "*"      [] basic-routes)
+  (GET      "/"      [] basic-routes)
+  (POST     "/v1/*"  [] v1/api-routes)
+  (route/not-found not-found/not-found-routes))
 
 (def handler app-routes)

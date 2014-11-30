@@ -28,7 +28,7 @@
 
 (defn offers-handler 
   "POST /v1/offers handler - returns a json array of offers"
-  []
+  [request]
   {:status 200
    :body (generate-string (offer/get-all))})
 
@@ -45,12 +45,9 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defroutes offers-routes*
-  (POST    "/v1/offers"  [] (offers-handler)))
-
 (def offers-routes 
   "Offers routes wrapped in their specific middleware"
-  (-> offers-routes*
+  (-> offers-handler
       (wrappers/token-authentication token)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -77,7 +74,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defroutes api-routes
-  (POST "/v1/token"  [] v1-routes)
-  (POST "/v1/offers" [] v1-routes)
+  (POST "/v1/*" [] v1-routes)
   (route/not-found not-found/not-found-routes))
 
