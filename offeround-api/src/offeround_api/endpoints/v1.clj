@@ -74,6 +74,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defroutes api-routes
-  (POST "/v1/*" [] v1-routes)
+  (POST "/v1/token"  [] v1-routes)
+  (POST "/v1/offers" [] v1-routes)
   (route/not-found not-found/not-found-routes))
 
