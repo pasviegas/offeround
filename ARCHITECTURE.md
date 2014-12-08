@@ -1,6 +1,6 @@
 1. I would change the database to a SQL db. 
 ####Reasons:
-    - Most of your data is already normalised. Apart from retailer in Offers table, everything else is normalised.
+    - Most of your data is already normalised. Apart from field retailer in Offers table, everything else is normalised.
     - The queries are mostly joined which would have a good improvement in a SQL environment. 
     - Inserting is also a very cheap operation o SQL databases.
 
