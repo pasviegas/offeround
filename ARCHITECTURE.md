@@ -9,8 +9,8 @@
 ####example:
 	after inserting product with name “mac”
 
-| id | search_hash | product_id |
-| -- | -- | -- |
+| id	        | search_hash   | product_id  |
+| ------------- |:--------------| -----------:|
 | 1 | hash(m) | 1 |
 | 2 | hash(ma) | 1 |
 | 3 | hash(mac) | 1 |
@@ -18,8 +18,8 @@
     then after inserting product with name “microsoft”
 
 
-| id | search_hash | product_id |
-| -- | -- | -- |
+| id	        | search_hash   | product_id  |
+| ------------- |:--------------| -----------:|
 | 1 | hash(m) | 1 |
 | 2 | hash(ma) | 1 |
 | 3 | hash(mac) | 1 |
