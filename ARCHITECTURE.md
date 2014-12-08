@@ -1,7 +1,7 @@
 
 ##Solution 1
 
-For this solution I tried to stick with the existing stack. Optimized the tables for quering, the updates for minimum indexing and using elasticsearch only for fulltext search.
+For this solution I tried to stick with the existing stack. Optimized the tables for quering, the updates for minimum indexing and using elasticsearch only for fulltext search (product name).
 
 - As pointed, one product can have many offers (from different retailers), so offers could be only inserted and updated and never deleted. In such case every store would always have 1 offer for every product. The offer model could even be preheated (if enough hard disk) so reindexing would drop significantly.
 	
