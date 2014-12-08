@@ -269,6 +269,7 @@ object Retailer12345Job {
 ##Solution 2
 
 This solution requires a big change in the existing stack, but given the existing models seems to be a good fit.
+
 	constraint: it would not handle typos properly, but I don't know if it is extremely necessary. 
 
 - I would change the database to a SQL db. 
