@@ -160,7 +160,7 @@ def closestOffersByCategoryName(name: String) = Action.async {
 // - /search/product/offers/:name
 // Gets all the offers for the exact product name. (could be used in product detail)
 def offersByExactProductName(name: String) = Action.async {
-  offersWith(obj("product.name" -> name))
+  offersWith(BSONDocument("product.name" -> name))
 }
  
 // - /search/product/closest/:name
