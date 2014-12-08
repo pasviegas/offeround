@@ -4,7 +4,7 @@
     - The queries are mostly joined which would have a good improvement in a SQL environment. 
     - Inserting is also a very cheap operation o SQL databases.
 
-2. I would create a table for storing “like” indexes, which would give you linear performance on search. In this table I would store a hash of every character of the product name and its corresponding product id, if a joined query is needed (product name + store) would be simple to make a modification to the hash to account the other field. Sql databases are very good at optimizing storage and hard disk doesn't seem to be a constraint, so I don't think this would be an issue.
+2. I would create a table for storing “like” indexes, which would give you linear performance on search. In this table I would store a hash of every character, separated by words, of the product name and its corresponding product id, if a joined query is needed (product name + store) would be simple to make a modification to the hash to account the other field. This would not be the primary index but an indexed field. Sql databases are very good at optimizing storage and hard disk doesn't seem to be a constraint, so I don't think this would be an issue.
 
 ####example:
 	after inserting product with name “mac”
