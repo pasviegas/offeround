@@ -50,8 +50,8 @@ db.offers.update(
      },
      //Quantity and price are always updated
      "$set": {
-     	"price": offer.price,
-     	"quantity": offer.quantity,
+     	"price": offerUpdate.price,
+     	"quantity": offerUpdate.quantity,
      	...
      }
    },
@@ -113,8 +113,8 @@ db.offers.update(
      },
      //Quantity and price are always updated
      "$set": {
-     	"price": offer.price,
-     	"quantity": offer.quantity,
+     	"price": offerUpdate.price,
+     	"quantity": offerUpdate.quantity,
      	...
      }
    },
