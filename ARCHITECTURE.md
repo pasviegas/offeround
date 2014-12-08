@@ -34,7 +34,7 @@
 | 12 | hash(microsoft) | 1 |
 	
 This way, quering would be very straight forward:
-###### SELECT PRODUCT_ID FROM SEARCH_INDEX_PRODUCT_STORE WHERE SEARCH_HASH = hash(m)
+###### SELECT PRODUCT_ID FROM SEARCH_INDEX_PRODUCT WHERE SEARCH_HASH = hash(m)
 		
 	returns product_id 1 and 2
 	
