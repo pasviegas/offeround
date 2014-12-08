@@ -34,8 +34,8 @@ var offerUpdate = ....
 
 db.offers.update(
    {//Query
-     "store.name": offerUpdate.product.name,
-     "product.name": offerUpdate.store.name,
+     "product.name": offerUpdate.product.name,
+     "store.name": offerUpdate.store.name
    },
    {//Indexes are only modified on on insert
      "$setOnInsert": {
@@ -96,9 +96,8 @@ var offerUpdate = ....
 
 db.offers.update(
    {//Query
-     "store.name": offerUpdate.product.name,
-     "product.name": offerUpdate.store.name,
-     "product.name": offerUpdate.store.name,
+     "product.name": offerUpdate.product.name,
+     "store.name": offerUpdate.store.name
    },
    {//Indexes are only modified on on insert
      "$setOnInsert": {
