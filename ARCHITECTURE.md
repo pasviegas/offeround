@@ -189,6 +189,13 @@ def closestOffersWith(query: BSONDocument) = {
 
 //create an aggregate query to find the closest given the location
 //right now is defaulting to Berlin
+//
+//db.runCommand({
+//   geoNear: "offers",
+//   near: { type: "Point" , coordinates: [ ... ] } ,
+//   spherical: true,
+//   query: ...,
+//})
 def closestWith(query: BSONDocument): BSONDocument = {
   BSONDocument(
     "geoNear" -> "offers",
