@@ -179,7 +179,7 @@ def closestOffersSearchingByProductName(name: String) = Action.async {
 
 //executes the aggregate query and returns as json response
 def closestOffersWith(query: BSONDocument) = {
-  collection.db.command(RawCommand(closestWith(query))).map(results => {
+  db.command(RawCommand(closestWith(query))).map(results => {
     results.getAsTry[BSONArray]("results") match {
       case Success(list) => Ok(toJson(list))
       case Failure(_) => NotFound
