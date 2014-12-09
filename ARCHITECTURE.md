@@ -238,14 +238,16 @@ case class Offer(price: Double,
 object Retailer12345Job {
 
   def main(args: Array[String]) {
-    //Could be a realtime stream
-    //val sparkContext = new StreamingContext(conf, Seconds(10)
-  
+    
     //10 is the amount of threads assigned
     val sparkContext = new SparkContext("local[10]", "Offeround")
-
+    //Could be a realtime stream
+    //val sparkContext = new StreamingContext(conf, Seconds(10)
+    
     //Read data from source
     val retailerXml = sparkContext.wholeTextFiles("Retailer12345.xml")
+    //for realtime streaming this could be a queue (ex: kafka) or network 
+    //val retailerXml = sparkContext.networkStream[String](new HttpStreamReceiver("localhost", 8445))
 
     //Normalize data
     val offers = retailerXml.flatMap(t => toOfferList(t._2))
